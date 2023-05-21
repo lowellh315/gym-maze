@@ -46,7 +46,7 @@ class MazeEnv(gym.Env):
         # observation is the x, y coordinate of the grid
         low = np.zeros(len(self.maze_size), dtype=int)
         high =  np.array(self.maze_size, dtype=int) - np.ones(len(self.maze_size), dtype=int)
-        self.observation_space = spaces.Box(low, high, dtype=np.int64)
+        self.observation_space = spaces.Box(low, high)
 
         # initial condition
         self.state = None
@@ -86,7 +86,6 @@ class MazeEnv(gym.Env):
         self.state = self.maze_view.robot
 
         info = {}
-
         return self.state, reward, done, info
 
     def reset(self):
